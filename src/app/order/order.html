@@ -1,0 +1,159 @@
+<div class="page" [class.light]="!isDarkMode">
+
+  <!-- Theme Toggle -->
+  <button class="theme-toggle" (click)="toggleTheme()">
+    {{ isDarkMode ? '☀ Light' : '🌙 Dark' }}
+  </button>
+
+  <h2>Shopping Mall Orders</h2>
+
+  <!-- Create Order Button -->
+  <button class="open-modal-btn" (click)="openModal()">
+    + Create Order
+  </button>
+
+  <!-- ================= MODAL ================= -->
+  <div class="modal-overlay" *ngIf="showModal">
+    <div class="modal-card">
+
+      <h3>{{ editMode ? 'Update Order' : 'Create Order' }}</h3>
+
+      <form #orderForm="ngForm" (ngSubmit)="submitOrder(orderForm)" novalidate>
+
+        <!-- Product ID -->
+        <div class="form-group">
+          <label>Product ID</label>
+          <input
+            type="number"
+            name="productId"
+            [(ngModel)]="order.productId"
+            required
+            #productId="ngModel">
+        </div>
+
+        <!-- Product Name -->
+        <div class="form-group">
+          <label>Product Name</label>
+          <input
+            type="text"
+            name="productName"
+            [(ngModel)]="order.productName"
+            required
+            #productName="ngModel">
+        </div>
+
+        <!-- Quantity -->
+        <div class="form-group">
+          <label>Quantity</label>
+          <input
+            type="number"
+            name="quantity"
+            [(ngModel)]="order.quantity"
+            required
+            #quantity="ngModel">
+        </div>
+
+        <!-- Total Price -->
+        <div class="form-group">
+          <label>Total Price</label>
+          <input
+            type="number"
+            name="totalPrice"
+            [(ngModel)]="order.totalPrice"
+            required
+            #totalPrice="ngModel">
+        </div>
+
+        <!-- Status -->
+        <div class="form-group">
+          <label>Status</label>
+          <input
+            type="text"
+            name="orderStatus"
+            [(ngModel)]="order.orderStatus"
+            required
+            #orderStatus="ngModel">
+        </div>
+
+        <!-- Modal Actions -->
+        <div class="modal-actions">
+          <button
+            type="submit"
+            class="submit-btn"
+            [disabled]="orderForm.invalid">
+            {{ editMode ? 'Update Order' : 'Submit Order' }}
+          </button>
+
+          <button
+            type="button"
+            class="cancel-btn"
+            (click)="closeModal()">
+            Cancel
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  <!-- ================= END MODAL ================= -->
+
+  <div class="spacer"></div>
+
+  <!-- ================= ORDERS GRID ================= -->
+  <div class="orders-container">
+
+    <div *ngIf="orders.length === 0" class="empty-message">
+      No orders found.
+    </div>
+
+    <div
+      class="order-card"
+      *ngFor="let o of orders; trackBy: trackByOrderId">
+
+      <div class="field">
+        <span>Order ID</span>
+        <strong>{{ o.orderId }}</strong>
+      </div>
+
+      <div class="field">
+        <span>Product ID</span>
+        <strong>{{ o.productId }}</strong>
+      </div>
+
+      <div class="field">
+        <span>Product</span>
+        <strong>{{ o.productName }}</strong>
+      </div>
+
+      <div class="field">
+        <span>Qty</span>
+        <strong>{{ o.quantity }}</strong>
+      </div>
+
+      <div class="field">
+        <span>Price</span>
+        <strong>{{ o.totalPrice }}</strong>
+      </div>
+
+      <div class="field">
+        <span>Status</span>
+        <strong>{{ o.orderStatus }}</strong>
+      </div>
+
+      <div class="card-actions">
+        <button class="edit-btn" (click)="editOrder(o)">
+          Edit
+        </button>
+
+        <button class="delete-btn" (click)="deleteOrder(o.orderId)">
+          Delete
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- ================= END GRID ================= -->
+
+</div>
