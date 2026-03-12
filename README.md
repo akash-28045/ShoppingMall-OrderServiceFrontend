@@ -1,12 +1,12 @@
-#Project Overview
+Project Overview
 
 This project is the frontend interface of an Order Management System developed using Angular. The application provides a user-friendly platform for managing orders through a modern web interface. It allows users to perform essential operations such as creating, viewing, updating, and deleting orders, while communicating with a backend API built using Spring Boot. The system is designed to simplify order handling by providing an interactive UI, efficient data binding, and real-time updates without needing to refresh the page.
 
-#Frontend Description
+Frontend Description
 
 The frontend is built using Angular standalone components and follows a component-based architecture. The main OrderComponent manages the order data and interacts with a dedicated OrderService to communicate with backend APIs using HttpClient. The UI includes a modal-based order form for creating and updating orders, and a card-based layout to display order details. Angular directives like *ngFor and *ngIf are used to dynamically render order data and handle conditional display states. Two-way data binding with ngModel enables real-time synchronization between user input and the application model.
 
-#Tools and Technologies Used
+Tools and Technologies Used
 
 Frontend Framework: Angular
 Programming Language: TypeScript
@@ -18,7 +18,7 @@ Package Manager: Node.js / npm
 Development Environment: VS Code
 Version Control: Git & GitHub
 
-#Features
+Features
 
 Create new orders through a form interface
 View orders displayed dynamically in a card layout
@@ -31,7 +31,7 @@ Light and dark theme toggle
 REST API integration with backend
 Optimized rendering using trackBy
 
-#Challenges Faced
+Challenges Faced
 
 Handling asynchronous API calls while updating the UI
 Ensuring form validation before submission
@@ -39,7 +39,7 @@ Synchronizing UI updates after delete and update operations
 Fixing module import and service integration issues
 Debugging Angular compilation and dependency errors
 
-#Improvements Implemented
+Improvements Implemented
 
 Implemented real-time UI updates after CRUD operations
 Added modal-based form for better user interaction
